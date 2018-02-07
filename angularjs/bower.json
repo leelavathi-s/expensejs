@@ -1,0 +1,12 @@
+{
+  "name": "angular",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.1",
+  "homepage": "https://github.com/leelavathi-s/angular",
+  "dependencies": {
+    "angular": "1.6.x",
+    "bootstrap": "4.0.x",
+    "angular-route": "1.6.x",
+    "angular-resource": "1.6.x"
+  }
+}

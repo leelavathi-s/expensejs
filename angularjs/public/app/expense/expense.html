@@ -1,0 +1,22 @@
+<div class="container-fluid">    
+    <div class="content">    
+        
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="expense" class="myClass">Expense Date:</label>  
+        <input type="text" class="form-control myClass" id="expense" placeholder="mm/dd/yyyy">
+    </div>
+    <div class="form-group">
+      <label for="category" class="myClass">Category:</label>
+        <my-dropdown options="categories" ng-class="myClass"> 
+        </my-dropdown>  
+    </div>
+    <div class="form-group">
+        <label for="amount" class="myClass">Amount:</label>
+         <input type="text" class="form-control myClass" id="amount" placeholder="Rs."> 
+    </div>
+    <div class="form-group">
+    <input type="button" class="btn btn-default" id="Save" value="Submit" > 
+    </div>
+   </form> 
+ </div>  
