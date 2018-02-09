@@ -1,7 +1,7 @@
 'use strict';
 
 angular.
-  module("expenseTracker").
+  module("expenseService").
   factory('expenseTrackerService', 
     function($resource)
      {

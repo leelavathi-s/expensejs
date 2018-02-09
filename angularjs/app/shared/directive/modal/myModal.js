@@ -1,4 +1,4 @@
-angular.module("expenseTracker").directive("myModal",function()
+angular.module("modal").directive("myModal",function()
 {
   return {
    restrict:"A",

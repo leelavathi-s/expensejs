@@ -1,6 +1,6 @@
 var app = angular
-.module("expenseTracker",['ngRoute','ngResource'])
-.controller("expenseTrackerController",function($scope,expenseTrackerService){
+.module("expenseTracker",['ngRoute','modal','dropdown','expenseService','currencyFormat'])
+.controller("expenseTrackerController",function($scope,expenseTrackerService,$filter){
     $scope.categories = [];
     $scope.expense={};
     var categories=expenseTrackerService

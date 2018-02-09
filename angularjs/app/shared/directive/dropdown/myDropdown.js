@@ -1,5 +1,5 @@
 var app = angular
-.module("expenseTracker")
+.module("dropdown")
 .directive("myDropdown",function(){
     return {
        restrict:'E',
