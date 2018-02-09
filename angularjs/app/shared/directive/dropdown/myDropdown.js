@@ -4,16 +4,21 @@ var app = angular
     return {
        restrict:'E',
        templateUrl:"shared/directive/dropdown/myDropdown.html",
+       replace:true,
        controller: function($scope)
        {
            function setSelected(option)
            {
-              console.log("Am I getting called",option);
               $scope.selected = option;
+              setCategory(option.category);
+           } 
+           function setCategory(category)
+           {
+             let parent = $scope.$parent;
+             parent.expense.category=category;
            }
-           console.log("$$scope",$scope);
            $scope.setSelected = setSelected;
-
+           $scope.setCategory = setCategory;
        },
        scope:{
            options:"="
@@ -22,13 +27,7 @@ var app = angular
            post:function(scope,iElement,iAttributes)
            {
               scope.selected =  scope.options[0];
-              console.log("###" , $(iElement).siblings().find("li"));
-              /*
-              $(iElement).siblings().find("li").bind({click:function(event){
-                 console.log("Am I getting called 222",event.target); 
-                scope.setSelected();
-              }}); */
-            
+              scope.setCategory(scope.selected.category);
            }
        }
     };

@@ -3,7 +3,10 @@
   width: 35%;
   margin-left: 25px; 
 }
-
+.myButton{
+ margin-left: 200px;
+ margin-top: 10px;
+}
 .container-fluid
 {
     padding-top: 25px;

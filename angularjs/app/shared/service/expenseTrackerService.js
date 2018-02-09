@@ -5,11 +5,22 @@ angular.
   factory('expenseTrackerService', 
     function($resource)
      {
-      return $resource('img/category.json',{}, {
-        query: {
-          method: 'GET',
-          isArray: true
+        let obj = 
+        {
+            getImage:function()
+            { 
+               let Category = $resource('img/category.json',{}, {
+                  query: {
+                    method: 'GET',
+                   isArray: true
+                }}); 
+                return Category.query();
+            },
+            save:function(expense)
+            {
+                let Expense = $resource('/expense');
+                Expense.save(expense);
+            }
         }
-      });
-    }
-  );
+        return obj;
+  });
