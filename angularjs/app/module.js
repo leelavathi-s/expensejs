@@ -14,6 +14,7 @@ var app = angular
     {
         expenseTrackerService.save(option);
      }
+     $scope.expenses = expenseTrackerService.get();
 
 });
  

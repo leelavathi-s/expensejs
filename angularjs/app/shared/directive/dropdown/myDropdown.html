@@ -2,11 +2,7 @@
         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
                 <img ng-src="{{ selected.src }}"> {{ selected.category }}
            <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" my-modal>
-                Open modal
-              </button>
-              
+        </button>         
         <ul class="dropdown-menu">
           <li class="dropdown-item" ng-click="setSelected(option)" ng-repeat="option in options">
               <img  ng-src= "{{ option.src }}">

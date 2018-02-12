@@ -20,7 +20,17 @@ angular.
             {
                 let Expense = $resource('/expense');
                 Expense.save(expense);
+            },
+            get:function(expense)
+            {
+                let Expense = $resource('/expense', {}, {
+                    query: {
+                      method: 'GET',
+                     isArray: true
+                  }}); 
+                return Expense.query();
             }
+
         }
         return obj;
   });

@@ -3,6 +3,9 @@ var app = angular
 .config(function($routeProvider){
  $routeProvider.when("/expense",{
    templateUrl:"expense/expense.html"
+ })
+ .when("/category",{
+   templateUrl:"expense/category.html"
  });
 });
 

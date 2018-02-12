@@ -11,6 +11,8 @@
 {
     padding-top: 25px;
 }
+.error-message{color:#f70707}
+input.ng-invalid.ng-touched{background-color:#eb9393  }
 .dropdown {margin-left:25px }
 .dropdown-menu{min-width: 29rem}
 .dropdown-toggle, .dropdown-menu { width: 300px }

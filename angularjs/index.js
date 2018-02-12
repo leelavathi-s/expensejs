@@ -14,9 +14,14 @@ app.get("/",function(req,res){
     res.sendFile('./app/index.html', { root: __dirname });
 });
 
+app.get("/expense",function(req,response){
+    Expense.get().then(function(data){
+        console.log("Am i here",data);
+        response.setHeader("Content-Type","application/json");    
+        response.send(data);
+        response.end();
+    });
+});
 app.post("/expense",function(req,response){
     Expense.save(req.body);
-    response.setHeader('Content-Type', 'text/html');
-    response.write("data");
-    response.end();
 });
