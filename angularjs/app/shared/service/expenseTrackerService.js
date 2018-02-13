@@ -21,7 +21,7 @@ angular.
                 let Expense = $resource('/expense');
                 Expense.save(expense);
             },
-            get:function(expense)
+            getExpenses:function(expense)
             {
                 let Expense = $resource('/expense', {}, {
                     query: {
@@ -29,6 +29,15 @@ angular.
                      isArray: true
                   }}); 
                 return Expense.query();
+            },
+            getCategories:function(expense)
+            {
+                let Category = $resource('/category', {}, {
+                    query: {
+                      method: 'GET',
+                     isArray: true
+                  }}); 
+                return Category.query();
             }
 
         }

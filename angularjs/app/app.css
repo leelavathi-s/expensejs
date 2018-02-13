@@ -11,8 +11,11 @@
 {
     padding-top: 25px;
 }
-.error-message{color:#f70707}
-input.ng-invalid.ng-touched{background-color:#eb9393  }
+.fa-edit{ color: #2aa863;}
+.fa-trash-o{color:#f31616}
+.alert-danger{width:100%;}
+.alert{margin-bottom:0px;border: 0px; }
+input.ng-invalid.ng-touched{background-color:#f8d7da  }
 .dropdown {margin-left:25px }
 .dropdown-menu{min-width: 29rem}
 .dropdown-toggle, .dropdown-menu { width: 300px }

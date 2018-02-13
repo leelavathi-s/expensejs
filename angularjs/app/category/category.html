@@ -1,0 +1,32 @@
+<div ng-controller="categoryController" class="panel">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-stripped table-bordered">
+                    <thead>
+                        <tr>
+                            <td>Category Name</td>
+                            <td>Category Description</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="category in categoriesFromDB">
+                            <td>{{ category.name}}</td>
+                            <td>{{ category.description}}</td>
+                            <td>
+                                <p>
+                                    <span class="fa fa-edit">
+                                        Edit
+                                    </span>
+                                    <span class="fa fa-trash-o"> Delete</span>                                    
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

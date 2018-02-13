@@ -3,28 +3,10 @@ var Mongo = require('./Mongo.js');
 exports.save = function(expense)
 {
     const promise = Mongo.connect();
-    promise.then(function(client) {
-        console.log("Connected successfully to server");
-      
-        var db = client.db("expenseTracker");
-        db.collection('expense').insertOne(expense, function(err, r) {
-        });
-      })
-      .catch(function(error){
-         console.log(error);
-      });
+    return promise.then((db) => db.collection('expense').insertOne(expense));
 }
-exports.get = function(expense)
+exports.get = function()
 {
-    return  Mongo.connect()
-        .then(function (client) {
-            console.log("Connected successfully to server");
-            return client.db("expenseTracker");
-        }).then(function (db) {
-            console.log("Connected successfully to server", db);
-            var res = db.collection('expense').find({});
-            return res.toArray();
-        }).catch(function (error) {
-            console.log(error);
-        });
+    const promise = Mongo.connect();
+    return  promise.then( (db) => db.collection('expense').find({}).toArray());
 }

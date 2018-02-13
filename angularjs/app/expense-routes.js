@@ -5,7 +5,10 @@ var app = angular
    templateUrl:"expense/expense.html"
  })
  .when("/category",{
-   templateUrl:"expense/category.html"
+   templateUrl:"category/category.html"
+ })
+ .when("/home",{
+   templateUrl:"/home.html"
  });
 });
 

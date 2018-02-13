@@ -4,7 +4,6 @@ var app = angular
     return {
        restrict:'E',
        templateUrl:"shared/directive/dropdown/myDropdown.html",
-       replace:true,
        controller: function($scope)
        {
            function setSelected(option)
@@ -21,13 +20,14 @@ var app = angular
            $scope.setCategory = setCategory;
        },
        scope:{
-           options:"="
+           options:"=",
+           default:"="
        },
        link:{
            post:function(scope,iElement,iAttributes)
            {
-              scope.selected =  scope.options[0];
-              scope.setCategory(scope.selected.category);
+               scope.options= [];
+              // scope.$on('setSelectedEvent',(event,data)=>scope.setSelected(data));
            }
        }
     };

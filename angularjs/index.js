@@ -2,26 +2,46 @@ var bodyParser = require("body-parser");
 var express = require("express");
 
 var Expense = require("./app/shared/mongo/Expense.js");
+var Category = require("./app/shared/mongo/Category.js");
+
 
 var app = express();
-app.listen(3000,function(){console.log("Listening to port 3000");});
+app.listen(3000, () => console.log("Listening to port 3000"));
 
 app.use(express.static('./app'));
 app.use(bodyParser.json());
 
 
-app.get("/",function(req,res){
-    res.sendFile('./app/index.html', { root: __dirname });
-});
+app.get("/", (req,res) => res.sendFile('./app/index.html', { root: __dirname }));
 
-app.get("/expense",function(req,response){
-    Expense.get().then(function(data){
-        console.log("Am i here",data);
+app.get("/expense",(req,response) => {
+    Expense.get().then((data) => {
         response.setHeader("Content-Type","application/json");    
         response.send(data);
         response.end();
+    }).catch( (error) => {
+        response.send("Error processing request.");
+        response.end();
     });
 });
-app.post("/expense",function(req,response){
-    Expense.save(req.body);
+app.post("/expense", (req,response) => {
+    Expense.save(req.body).then((data) =>
+    {
+        console.log("Saved expense in db successfully.");
+        response.sendStatus(201);
+    }).catch((error) =>{
+        response.send("Error processing request.");
+        response.end();
+     });
+});
+app.get("/category",(req,response) => {
+    Category.get().then((data) => {
+        response.setHeader("Content-Type","application/json");    
+        response.send(data);
+        response.end();
+        console.log(data);
+    }).catch( (error) => {
+        response.send("Error processing request.");
+        response.end();
+    });
 });
