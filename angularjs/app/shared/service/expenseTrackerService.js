@@ -9,11 +9,7 @@ angular.
         {
             getImage:function()
             { 
-               let Category = $resource('img/category.json',{}, {
-                  query: {
-                    method: 'GET',
-                   isArray: true
-                }}); 
+               let Category = $resource('img/category.json'); 
                 return Category.query();
             },
             save:function(expense)
@@ -32,12 +28,27 @@ angular.
             },
             getCategories:function(expense)
             {
-                let Category = $resource('/category', {}, {
-                    query: {
-                      method: 'GET',
-                     isArray: true
-                  }}); 
+                let Category = $resource('/category'); 
                 return Category.query();
+            },
+            saveCategory:function(category)
+            {
+                let Category = $resource('/category');
+                Category.save(category);
+            },
+            updateCategory:function(category)
+            {
+                let Category = $resource('/category/:categoryId',{categoryId:'@id'},{
+                    update:{
+                        method:"PUT"
+                    }
+                });
+                Category.update(category);
+            },
+            removeCategory:function(category)
+            {
+                let Category = $resource('/category/:categoryId',{categoryId:'@id'});
+                Category.remove(category);
             }
 
         }

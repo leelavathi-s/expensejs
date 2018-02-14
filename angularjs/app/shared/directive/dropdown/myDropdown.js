@@ -8,12 +8,14 @@ var app = angular
        {
            function setSelected(option)
            {
-              $scope.selected = option;
+              $scope.default = option;
+              console.log("selected option::",$scope.default);
               setCategory(option.category);
            } 
            function setCategory(category)
            {
              let parent = $scope.$parent;
+             console.log("parent categories::",$scope.$parent.categories);
              parent.expense.category=category;
            }
            $scope.setSelected = setSelected;

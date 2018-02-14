@@ -45,3 +45,15 @@ app.get("/category",(req,response) => {
         response.end();
     });
 });
+app.put("/category",(req,response) => {
+    Category.update(req.body).then(data => {
+        response.setHeader("Content-Type","application/json");    
+        response.send(data);
+        response.end();
+        console.log(data);
+    }).catch( (error) => {
+        console.log(error);
+        response.send("Error processing request.");
+        response.end();
+    });
+});

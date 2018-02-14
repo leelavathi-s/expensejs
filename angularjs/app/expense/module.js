@@ -4,7 +4,7 @@ angular
 
     $scope.categories = [];
     $scope.expense={};
-    var categories=expenseTrackerService
+    expenseTrackerService
     .getImage()
     .$promise
     .then(data => {

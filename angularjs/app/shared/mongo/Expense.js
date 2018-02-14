@@ -1,12 +1,12 @@
 var Mongo = require('./Mongo.js');
 
-exports.save = function(expense)
+exports.save = expense =>
 {
     const promise = Mongo.connect();
-    return promise.then((db) => db.collection('expense').insertOne(expense));
+    return promise.then(db => db.collection('expense').insertOne(expense));
 }
-exports.get = function()
+exports.get = () =>
 {
     const promise = Mongo.connect();
-    return  promise.then( (db) => db.collection('expense').find({}).toArray());
+    return promise.then(db => db.collection('expense').find({}).toArray());
 }
