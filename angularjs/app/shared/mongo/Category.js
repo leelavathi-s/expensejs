@@ -1,4 +1,5 @@
 var Mongo = require('./Mongo.js');
+var mongodb = require('mongodb');
 
 exports.get =  () => {
     const promise = Mongo.connect();
@@ -7,8 +8,8 @@ exports.get =  () => {
 
 exports.update = category =>{
     const promise = Mongo.connect();
-    return promise.then(db => db.collection('category').replaceOne({ _id: category._id },
-         {name:category.name,description:category.description}));
+    category._id = mongodb.ObjectId(category._id);
+    return promise.then(db => db.collection('category').replaceOne({_id:category._id},category));
 }
 
 exports.create = category =>{

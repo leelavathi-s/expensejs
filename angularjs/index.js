@@ -20,6 +20,7 @@ app.get("/expense",(req,response) => {
         response.send(data);
         response.end();
     }).catch( (error) => {
+        response.sendStatus(500);        
         response.send("Error processing request.");
         response.end();
     });
@@ -30,6 +31,7 @@ app.post("/expense", (req,response) => {
         console.log("Saved expense in db successfully.");
         response.sendStatus(201);
     }).catch((error) =>{
+        response.sendStatus(500);        
         response.send("Error processing request.");
         response.end();
      });
@@ -41,6 +43,7 @@ app.get("/category",(req,response) => {
         response.end();
         console.log(data);
     }).catch( (error) => {
+        response.sendStatus(500);        
         response.send("Error processing request.");
         response.end();
     });
@@ -53,6 +56,7 @@ app.put("/category",(req,response) => {
         console.log(data);
     }).catch( (error) => {
         console.log(error);
+        response.sendStatus(500);
         response.send("Error processing request.");
         response.end();
     });

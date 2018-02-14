@@ -1,5 +1,6 @@
 var Promise = require('bluebird');
 var MongoClient = require('mongodb').MongoClient;
+
 exports.connect = () => {
 
 // Connection URL
@@ -11,7 +12,7 @@ var dbName = 'expenseTracker';
 // Use connect method to connect to the server
 return MongoClient.connect(url)
     .then( (client) => {
-        console.log("Connected successfully to server");    
+        console.log("Connected successfully to server");  
         return client.db("expenseTracker");
     });
 }
