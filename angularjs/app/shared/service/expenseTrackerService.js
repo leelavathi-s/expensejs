@@ -27,28 +27,29 @@ angular.
                     let Category = $resource('/category');
                     return Category.query();
                 },
-                saveCategory: function (category) {
+                createCategory: function (category) {
                     let Category = $resource('/category');
-                    Category.save(category);
+                    return Category.save(category);
                 },
                 updateCategory: function (category) {
-                    let Category = $resource('/category/:categoryId', { categoryId: '@id' }, {
+                    let Category = $resource('/category/:categoryId', { categoryId: category._id }, {
                         update: {
                             method: "PUT",
-                            transformResponse: function (data, headers, statusCode) {
-                                console.log(statusCode);//prints 200 if nothing went wrong
-                                var finalResponse = {
-                                    data: data,
-                                    responseStatusCode: statusCode
-                                };
-                                return finalResponse;
-                            }
+                           //// transformResponse: function (data, headers, statusCode) {
+                             //   console.log(statusCode);//prints 200 if nothing went wrong
+                               // var finalResponse = {
+                                 //   data: data,
+                                   // responseStatusCode: statusCode
+                             //   };
+                               // return finalResponse;
+                            //}
                         }});
                     return Category.update(category);
                 },
                 removeCategory: function (category) {
-                    let Category = $resource('/category/:categoryId', { categoryId: '@id' });
-                    Category.remove(category);
+                    let Category = $resource('/category/:categoryId', { categoryId: category._id });
+                    console.log("category^^",category._id,"**");
+                    return Category.remove();
                 }
 
             }

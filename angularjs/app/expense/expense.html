@@ -1,44 +1,61 @@
-<div ng-controller="expenseController" class="container-fluid">
-  
-  <div ng-show="expenseForm.expenseDate.$touched 
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">
+        <h5>Manage Expenses</h5>
+      </div>
+      <div class="card-block">
+        <p class="card-subtitle text-muted" style="font-size: 13px">Add daily expenses</p>
+      </div>
+      <p></p>
+      <div class="card-block">
+        <p class="header-line gradient-color-1"></p>
+      </div>
+
+      <div lass="card-block" ng-controller="expenseController">
+
+        <div ng-show="expenseForm.expenseDate.$touched 
           && expenseForm.expenseDate.$error.required" class="alert alert-danger" role="alert">
-    <span class="fa fa-warning" aria-hidden="true"></span>
-    Expense date is required.
-  </div>
-  <div ng-show="expenseForm.amount.$touched 
+          <span class="fa fa-warning" aria-hidden="true"></span>
+          Expense date is required.
+        </div>
+        <div ng-show="expenseForm.amount.$touched 
       && expenseForm.amount.$error.required" class="alert alert-danger" role="alert">
-    <span class="fa fa-warning" aria-hidden="true"></span>
-    Expense amount is required.
-  </div>
-  <div ng-show="expenseForm.amount.$touched 
+          <span class="fa fa-warning" aria-hidden="true"></span>
+          Expense amount is required.
+        </div>
+        <div ng-show="expenseForm.amount.$touched 
   && expenseForm.amount.$error.pattern" class="alert alert-danger" role="alert">
-    <span class="fa fa-warning" aria-hidden="true"></span>
-    Amount must be a number.
+          <span class="fa fa-warning" aria-hidden="true"></span>
+          Amount must be a number.
+        </div>
+
+
+        <form name="expenseForm" class="form-horizontal">
+          <div class="form-group">
+            <label for="expense" class="myClass">Expense Date:</label>
+            <input type="date" class="form-control myClass" required ng-model="expense.date" name="expenseDate" placeholder="mm/dd/yyyy">
+          </div>
+          <div class="form-group">
+            <label for="category" class="myClass">Category:</label>
+            <my-dropdown options="categories" default="categories[0]" ng-class="myClass">
+            </my-dropdown>
+          </div>
+          <div class="form-group">
+            <label for="amount" class="myClass">Amount:</label>
+            <input type="text" class="form-control myClass" ng-pattern="/^[0-9]{1,7}$/" required ng-model="expense.amount" my-currency-format
+              name="amount" placeholder="Rs.">
+          </div>
+          <div class="form-group">
+            <label for="amount" class="myClass">Description:</label>
+            <input type="text" class="form-control myClass" ng-model="expense.description" name="description">
+          </div>
+          <div class="form-group">
+            <input type="button" class="btn btn-default myButton" id="Save" ng-disabled="expenseForm.$invalid" ng-click="saveExpense(expense)"
+              value="Save">
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-
-
-  <form name="expenseForm" class="form-horizontal">
-    <div class="form-group">
-      <label for="expense" class="myClass">Expense Date:</label>
-      <input type="date" class="form-control myClass" required ng-model="expense.date" name="expenseDate" placeholder="mm/dd/yyyy">
-    </div>
-    <div class="form-group">
-      <label for="category" class="myClass">Category:</label>
-      <my-dropdown options="categories" default = "categories[0]" ng-class="myClass">
-      </my-dropdown>
-    </div>
-    <div class="form-group">
-      <label for="amount" class="myClass">Amount:</label>
-      <input type="text" class="form-control myClass" ng-pattern="/^[0-9]{1,7}$/" required ng-model="expense.amount" my-currency-format
-        name="amount" placeholder="Rs.">
-    </div>
-    <div class="form-group">
-      <label for="amount" class="myClass">Description:</label>
-      <input type="text" class="form-control myClass" ng-model="expense.description" name="description">
-    </div>
-    <div class="form-group">
-      <input type="button" class="btn btn-default myButton" id="Save" ng-disabled="expenseForm.$invalid" ng-click="saveExpense(expense)"
-        value="Save">
-    </div>
-  </form>
 </div>

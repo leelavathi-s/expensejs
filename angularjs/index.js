@@ -48,9 +48,38 @@ app.get("/category",(req,response) => {
         response.end();
     });
 });
-app.put("/category",(req,response) => {
+app.put("/category/:categoryId",(req,response) => {
     Category.update(req.body).then(data => {
         response.setHeader("Content-Type","application/json");    
+        response.send(data);
+        response.end();
+        console.log(data);
+    }).catch( (error) => {
+        console.log(error);
+        response.sendStatus(500);
+        response.send("Error processing request.");
+        response.end();
+    });
+});
+app.post("/category",(req,response) => {
+    Category.create(req.body).then(data => {
+        response.setHeader("Content-Type","application/json"); 
+        response.status(201);        
+        response.send(data);
+        response.end();
+        console.log(data);
+    }).catch( (error) => {
+        console.log(error);
+        response.sendStatus(500);
+        response.send("Error processing request.");
+        response.end();
+    });
+});
+
+app.delete("/category/:categoryId",(req,response) => {
+    Category.remove(req.params.categoryId).then(data => {
+        response.setHeader("Content-Type","application/json");    
+        response.status(204);
         response.send(data);
         response.end();
         console.log(data);

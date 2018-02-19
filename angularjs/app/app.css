@@ -11,6 +11,7 @@
 {
     padding-top: 25px;
 }
+.alert-info{width: 100%}
 .fa-plus-circle{color: rgb(21, 21, 173); }
 span.fa-plus-circle{margin-left: 88%}
 #description{width:80%;}

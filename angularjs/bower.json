@@ -7,6 +7,9 @@
     "angular": "1.6.x",
     "bootstrap": "4.0.x",
     "angular-route": "1.6.x",
-    "angular-resource": "1.6.x"
+    "angular-resource": "1.6.x",
+    "angular-bootstrap":"latest",
+    "angular-animate":"1.6.x",
+    "angular-sanitize":"1.6.x"
   }
 }
