@@ -12,10 +12,10 @@ angular.
                 },
                 save: function (expense) {
                     let Expense = $resource('/expense');
-                    Expense.save(expense);
+                    return Expense.save(expense);
                 },
-                getExpenses: function (expense) {
-                    let Expense = $resource('/expense', {}, {
+                getExpensesGroupedByCategory: function (expense) {
+                    let Expense = $resource('/expense', { groupBy: 'category' }, {
                         query: {
                             method: 'GET',
                             isArray: true
@@ -35,20 +35,20 @@ angular.
                     let Category = $resource('/category/:categoryId', { categoryId: category._id }, {
                         update: {
                             method: "PUT",
-                           //// transformResponse: function (data, headers, statusCode) {
-                             //   console.log(statusCode);//prints 200 if nothing went wrong
-                               // var finalResponse = {
-                                 //   data: data,
-                                   // responseStatusCode: statusCode
-                             //   };
-                               // return finalResponse;
+                            //// transformResponse: function (data, headers, statusCode) {
+                            //   console.log(statusCode);//prints 200 if nothing went wrong
+                            // var finalResponse = {
+                            //   data: data,
+                            // responseStatusCode: statusCode
+                            //   };
+                            // return finalResponse;
                             //}
-                        }});
+                        }
+                    });
                     return Category.update(category);
                 },
                 removeCategory: function (category) {
                     let Category = $resource('/category/:categoryId', { categoryId: category._id });
-                    console.log("category^^",category._id,"**");
                     return Category.remove();
                 }
 

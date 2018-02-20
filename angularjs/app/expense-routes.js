@@ -9,8 +9,11 @@ var app = angular
       })
       .when("/home", {
         templateUrl: "/home.html"
-      }).otherwise("/", {
-        templateUrl: "/home.html"
+      }).when("/report", {
+        templateUrl: "report/report.html"
+      })
+      .otherwise("/", {
+        redirectTo: "/home"
       });
   });
 

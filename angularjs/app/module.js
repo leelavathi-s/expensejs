@@ -1,2 +1,2 @@
-angular.module("expenseTracker",['ngRoute','category','expense']);
+angular.module("expenseTracker",['ngRoute','category','expense','report']);
  

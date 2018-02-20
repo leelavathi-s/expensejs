@@ -13,7 +13,7 @@
       </div>
 
       <div lass="card-block" ng-controller="expenseController">
-
+          <span ng-show="isSaved"class="fa fa-info-circle alert alert-info">Saved successfully</span>          
         <div ng-show="expenseForm.expenseDate.$touched 
           && expenseForm.expenseDate.$error.required" class="alert alert-danger" role="alert">
           <span class="fa fa-warning" aria-hidden="true"></span>
@@ -51,9 +51,13 @@
             <input type="text" class="form-control myClass" ng-model="expense.description" name="description">
           </div>
           <div class="form-group">
-            <input type="button" class="btn btn-default myButton" id="Save" ng-disabled="expenseForm.$invalid" ng-click="saveExpense(expense)"
+              <input type="button" class="btn btn-default myButton" id="Clear" ng-click="clear(expense)"
+              value="Clear">
+            <input type="button" class="btn btn-default " id="Save" ng-disabled="expenseForm.$invalid" ng-click="saveExpense(expense)"
               value="Save">
+             
           </div>
+         
         </form>
       </div>
     </div>

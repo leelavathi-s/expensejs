@@ -10,6 +10,7 @@
     "angular-resource": "1.6.x",
     "angular-bootstrap":"latest",
     "angular-animate":"1.6.x",
-    "angular-sanitize":"1.6.x"
+    "angular-sanitize":"1.6.x",
+    "angular-chart.js":"latest"
   }
 }

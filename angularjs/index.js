@@ -15,11 +15,13 @@ app.use(bodyParser.json());
 app.get("/", (req,res) => res.sendFile('./app/index.html', { root: __dirname }));
 
 app.get("/expense",(req,response) => {
-    Expense.get().then((data) => {
-        response.setHeader("Content-Type","application/json");    
+    Expense.get(req.params.groupBy).then((data) => {
         response.send(data);
+        response.setHeader("Content-Type","application/json");    
+        //response.json(data);
         response.end();
     }).catch( (error) => {
+        console.log("error is::",error);
         response.sendStatus(500);        
         response.send("Error processing request.");
         response.end();

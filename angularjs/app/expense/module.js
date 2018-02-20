@@ -12,9 +12,10 @@ angular
        // $scope.$broadcast('setSelectedEvent', data[0]);        
     });
 
-    $scope.saveExpense = function(option)
+    $scope.saveExpense = option =>
     {
-        expenseTrackerService.save(option);
+        expenseTrackerService.save(option).$promise.then(data=>$scope.isSaved=true);
      }
-     $scope.expenses = expenseTrackerService.getExpenses();
+     $scope.clear = expense => {expense.date="";expense.amount="",expense.description=""}
+    // $scope.expenses = expenseTrackerService.getExpenses();
 });

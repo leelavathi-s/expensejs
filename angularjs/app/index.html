@@ -8,13 +8,16 @@
   <link rel="stylesheet" href="app.css" />
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>
+  
+  <script src="bower_components/chart.js/dist/Chart.min.js"></script>
+  <script src="bower_components/angular-chart.js/dist/angular-chart.min.js"></script>  
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
 
@@ -24,14 +27,14 @@
   <script src="shared/directive/currencyFormat/module.js"></script>
   <script src="shared/service/expenseTrackerService.js"></script>
   <script src="module.js"></script>
-
-  <script src="expense-routes.js"></script>
+  
   <script src="shared/directive/dropdown/myDropdown.js"></script>
   <script src="shared/directive/currencyFormat/currencyFormat.js"></script>
-
+  <script src="report/module.js"></script>
   <script src="category/module.js"></script>
   <script src="expense/module.js"></script>
-
+  <script src="expense-routes.js"></script>
+  
 </head>
 
 <body ng-app="expenseTracker">
@@ -39,7 +42,7 @@
   <!-- <div ng-include="header.html"></div> -->
   <nav class="navbar  navbar-expand-lg navbar-dark bg-dark ">
 
-    <a class="navbar-brand" href="#!home">
+      <a class="navbar-brand" href="#!home">
       <img src="/img/money-bag.png" class="img-responsive"> Expense Tracker</a>
 
     <div class="collapse navbar-collapse" id="navbarText">
@@ -49,6 +52,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#!category">Category</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!report">Report</a>
         </li>
 
       </ul>
