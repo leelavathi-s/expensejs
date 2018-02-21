@@ -11,12 +11,45 @@
             <div class="card-block">
                 <p class="header-line gradient-color-1"></p>
             </div>
-            <div>
-                <h6>Category by year</h6>
-                <canvas id="pie" class="chart chart-pie" chart-data="data" 
-                chart-labels="labels" chart-options="options">
-                </canvas>
+            <p></p>
+            <div class="card-block">
+                <span ng-show="norecords" class="fa fa-info-circle alert alert-info">No records for the selected year {{ year }}</span>
+                <p></p>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
 
+                    <div class="card-block">
+                        <select class="form-control" ng-model="year" ng-change="getExpensesByYear()">
+                            <option>2016</option>
+                            <option>2017</option>
+                            <option>2018</option>
+                        </select>
+                    </div>
+                    <div class="card-block">
+                        <p></p>
+                        <canvas ng-show="!norecords" id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels">
+                        </canvas>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="card-block">
+                        <select class="form-control" ng-model="period" ng-change="getExpensesYearwise()">
+                            <option>Last 3 years</option>
+                            <option>Last 5 years</option>
+                            <option>All years</option>
+                        </select>
+                    </div>
+                    <div class="card-block">
+                        <p></p>
+                        <canvas id="base" 
+                        class="chart-horizontal-bar" chart-series="series" 
+                        chart-data="dataForBarChart" chart-labels="labelsForBarChart"
+                        chart-options="options">
+                        </canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

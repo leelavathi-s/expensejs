@@ -6,16 +6,16 @@ angular.
     function ($resource) {
         let obj =
             {
-                getImage: function () {
+                getImage: () => {
                     let Category = $resource('img/category.json');
                     return Category.query();
                 },
-                save: function (expense) {
+                save: expense => {
                     let Expense = $resource('/expense');
                     return Expense.save(expense);
                 },
-                getExpensesGroupedByCategory: function (expense) {
-                    let Expense = $resource('/expense', { groupBy: 'category' }, {
+                getExpensesGroupedByCategory: groupByYear => {
+                    let Expense = $resource('/expense', { year: groupByYear }, {
                         query: {
                             method: 'GET',
                             isArray: true
@@ -23,15 +23,24 @@ angular.
                     });
                     return Expense.query();
                 },
-                getCategories: function (expense) {
+                getExpensesYearwise: periods => {
+                    let Expense = $resource('/expense', { period: periods }, {
+                        query: {
+                            method: 'GET',
+                            isArray: true
+                        }
+                    });
+                    return Expense.query();
+                },
+                getCategories: () => {
                     let Category = $resource('/category');
                     return Category.query();
                 },
-                createCategory: function (category) {
+                createCategory: category => {
                     let Category = $resource('/category');
                     return Category.save(category);
                 },
-                updateCategory: function (category) {
+                updateCategory: category => {
                     let Category = $resource('/category/:categoryId', { categoryId: category._id }, {
                         update: {
                             method: "PUT",
@@ -47,7 +56,7 @@ angular.
                     });
                     return Category.update(category);
                 },
-                removeCategory: function (category) {
+                removeCategory: category => {
                     let Category = $resource('/category/:categoryId', { categoryId: category._id });
                     return Category.remove();
                 }
